@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { addDoc, collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCcKQvDmZ8Rg1Hjsp_9AWpnBODE2RZE218',
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: 'karpedia-dev.firebaseapp.com',
   projectId: 'karpedia-dev',
   storageBucket: 'karpedia-dev.appspot.com',
