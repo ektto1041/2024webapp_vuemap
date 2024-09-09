@@ -3,12 +3,11 @@ import { addDoc, collection, doc, getDocs, getFirestore, setDoc } from 'firebase
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_KEY,
-  authDomain: 'karpedia-dev.firebaseapp.com',
-  projectId: 'karpedia-dev',
-  storageBucket: 'karpedia-dev.appspot.com',
-  messagingSenderId: '1093645881039',
-  appId: '1:1093645881039:web:5882301b038488da0b31ba',
-  measurementId: 'G-SKWMGJEFP9',
+  authDomain: 'vuemap-3ec88.firebaseapp.com',
+  projectId: 'vuemap-3ec88',
+  storageBucket: 'vuemap-3ec88.appspot.com',
+  messagingSenderId: '350714389250',
+  appId: '1:350714389250:web:2459440a96ee605805981b',
 };
 
 const app = initializeApp(firebaseConfig);
