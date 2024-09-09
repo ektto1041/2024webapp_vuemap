@@ -26,7 +26,7 @@ const usernameInput = useTemplateRef('username-input');
 
 const map = ref(null);
 const markerList = ref([]);
-const iwList = ref([]);
+const customOverlayList = ref([]);
 const canSave = ref(false);
 const selectedAddress = ref('');
 const selectedPos = ref({});
@@ -41,12 +41,12 @@ watch(
       markerList.value.forEach(marker => {
         marker.setMap(null);
       });
-      iwList.value.forEach(iw => {
-        iw.close();
+      customOverlayList.value.forEach(customOverlay => {
+        customOverlay.setMap(null);
       });
 
       markerList.value = [];
-      iwList.value = [];
+      customOverlayList.value = [];
 
       const imageSrc = './marker.png';
       const imageSize = new kakao.maps.Size(64, 64);
@@ -64,21 +64,22 @@ watch(
 
         marker.setMap(newValue[1]);
 
-        const iwContent = `
-          <div style="min-width: 150px; text-align: center; font-size: 1.5rem; line-height: 2rem; padding: 1rem; border-radius: 1rem; border: 2px solid white; box-shadow: 0 0 8px rgba(0, 0, 0, .3), 0 0 8px 8px white;">
+        const overlayContent = `
+          <div style="width: 100px; padding: .25rem; text-align: center; transform: translateY(-250%); background-color: white; box-shadow: 0 0 8px rgba(0, 0, 0, .3); border-radius: .5rem;">
             ${user.name}
           </div>
         `;
 
-        const iw = new kakao.maps.InfoWindow({
+        const customOverlay = new kakao.maps.CustomOverlay({
           position: new kakao.maps.LatLng(user.lat, user.lng),
-          content: iwContent,
-          isRemovable: true,
+          content: overlayContent,
+          yAnchor: 1,
+          zIndex: 20,
         });
 
-        iwList.value.push(iw);
+        customOverlayList.value.push(customOverlay);
 
-        iw.open(newValue[1], marker);
+        customOverlay.setMap(newValue[1]);
       });
     }
   },
